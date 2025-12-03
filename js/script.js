@@ -1,4 +1,4 @@
-// ========== PARTICLES CONFIGURATION ==========
+
 particlesJS('particles-js', {
     particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -20,23 +20,53 @@ particlesJS('particles-js', {
             random: true,
             straight: false,
             out_mode: 'out',
-            bounce: false
+            bounce: false,
+            attract: {
+                enable: true,
+                rotateX: 600,
+                rotateY: 1200
+            }
         }
     },
     interactivity: {
         detect_on: 'canvas',
         events: {
-            onhover: { enable: true, mode: 'grab' },
-            onclick: { enable: true, mode: 'push' },
+            onhover: {
+                enable: true,
+                mode: ['grab', 'bubble']  // Multiple modes for richer interaction
+            },
+            onclick: {
+                enable: true,
+                mode: 'push'
+            },
             resize: true
         },
         modes: {
-            grab: { distance: 140, line_linked: { opacity: 0.5 } },
-            push: { particles_nb: 4 }
+            grab: {
+                distance: 200,  // Increased distance 
+                line_linked: {
+                    opacity: 0.8  // Brighter lines on hover
+                }
+            },
+            bubble: {
+                distance: 200,
+                size: 6,
+                duration: 2,
+                opacity: 0.8,
+                speed: 3
+            },
+            repulse: {
+                distance: 100,
+                duration: 0.4
+            },
+            push: {
+                particles_nb: 4
+            }
         }
     },
     retina_detect: true
 });
+
 
 // ========== SCROLL ANIMATIONS ==========
 const observerOptions = {
@@ -189,3 +219,23 @@ contactForm.addEventListener('submit', (e) => {
     // Reset form
     contactForm.reset();
 });
+
+// ========== TYPING EFFECT (Optional Enhancement) ==========
+// Uncomment to add typing animation to hero subtitle
+/*
+const heroSubtitle = document.querySelector('.hero-subtitle');
+const textToType = 'Hello, I am';
+let charIndex = 0;
+ 
+heroSubtitle.textContent = '';
+ 
+function typeText() {
+    if (charIndex < textToType.length) {
+        heroSubtitle.textContent += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeText, 100);
+    }
+}
+ 
+setTimeout(typeText, 500);
+*/
